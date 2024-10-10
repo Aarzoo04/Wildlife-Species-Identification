@@ -6,6 +6,10 @@ import shutil
 from ultralytics import YOLO
 import cv2
 import logging
+from fastapi.middleware.cors import CORSMiddleware
+
+
+
 
 # Initialize logging
 logging.basicConfig(level=logging.INFO)
@@ -16,6 +20,14 @@ app = FastAPI()
 @app.get("/")
 def read_root():
     return FileResponse("./index.html")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Directories for file uploads and processed images
 UPLOAD_DIRECTORY = "api/uploaded_images"
