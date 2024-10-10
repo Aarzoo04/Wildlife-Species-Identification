@@ -35,10 +35,17 @@ To set up the project locally, follow these steps:
 5. **Access the application**:
    ```bash
    Open index.html (from frontend folder) to use the application
+
 ## Usage
-- Upload an image containing a Striped Hyena or Fishing Cat.
-- Click the "Detect" button to process the image.
-- View the results with bounding boxes indicating detected animals.
+
+- Upload a folder containing images of Striped Hyenas and Fishing Cats.
+- Click the "Upload" button to process the images.
+- View the results in the `processed_images` folder located within the `api` folder.
+- The `processed_images` folder will contain separate subfolders for:
+  - **Fishing Cat**: Images of detected fishing cats with bounding boxes.
+  - **Hyenas**: Images of detected hyenas with bounding boxes.
+  - **Other**: Unidentified species or images where no animals were detected.
+
 ## Contributing
 Contributions are welcome! Please submit a pull request or open an issue for any suggestions or improvements.
 ## Acknowledgements
