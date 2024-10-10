@@ -17,15 +17,16 @@ app = FastAPI()
 def read_root():
     return FileResponse("../index.html")
 
-# Mount the directory to serve static files
-app.mount("/static", StaticFiles(directory="processed_images"), name="static")
-
 # Directories for file uploads and processed images
 UPLOAD_DIRECTORY = "./uploaded_images"
 PROCESSED_IMAGES_DIRECTORY = "./processed_images"
 
+# Create the directories if they don't exist
 os.makedirs(UPLOAD_DIRECTORY, exist_ok=True)
 os.makedirs(PROCESSED_IMAGES_DIRECTORY, exist_ok=True)
+
+# Mount the directory to serve static files
+app.mount("/static", StaticFiles(directory=PROCESSED_IMAGES_DIRECTORY), name="static")
 
 # Load the ONNX model
 onnx_model = YOLO("../best.onnx", task='detect')
