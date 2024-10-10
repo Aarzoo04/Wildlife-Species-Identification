@@ -33,7 +33,7 @@ To set up the project locally, follow these steps:
    ```bash
    uvicorn main:app --reload
 5. **Access the application**:
-   Open `index.html` from `frontend` folder to use the application
+  Open your browser and navigate to `http://127.0.0.1:8000` to use the app.
 
 ## Usage
 
