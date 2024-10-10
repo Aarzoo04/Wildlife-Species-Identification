@@ -34,13 +34,7 @@ os.makedirs(PROCESSED_IMAGES_DIRECTORY, exist_ok=True)
 # Mount the directory to serve static files
 app.mount("/static", StaticFiles(directory=PROCESSED_IMAGES_DIRECTORY), name="static")
 
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=["*"],  
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
+
 
 # Load the ONNX model
 onnx_model = YOLO("./best.onnx", task='detect')
