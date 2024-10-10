@@ -32,6 +32,8 @@ To set up the project locally, follow these steps:
 4. **Run the FastAPI server**:
    ```bash
    uvicorn main:app --reload
+5. **Access the application**: 
+   Open frontend/index.html to use the application
 ## Usage
 - Upload an image containing a Striped Hyena or Fishing Cat.
 - Click the "Detect" button to process the image.
