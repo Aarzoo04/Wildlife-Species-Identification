@@ -7,8 +7,8 @@ import cv2
 
 app = FastAPI()
 
-UPLOAD_DIRECTORY = "api\uploaded_images"
-PROCESSED_IMAGES_DIRECTORY = "api\processed_images"
+UPLOAD_DIRECTORY = "api/uploaded_images"
+PROCESSED_IMAGES_DIRECTORY = "api/processed_images"
 
 os.makedirs(UPLOAD_DIRECTORY, exist_ok=True)
 os.makedirs(PROCESSED_IMAGES_DIRECTORY, exist_ok=True)
