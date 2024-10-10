@@ -28,7 +28,7 @@ To set up the project locally, follow these steps:
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 3. **Install required packages**:
    ```bash
-   pip install -r api/requirements.txt
+   pip install -r requirements.txt
 4. **Run the FastAPI server**:
    ```bash
    uvicorn api.main:app --reload
