@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLOv8 Object Detection</title>
+</head>
+<body>
+    <h1>Upload Folder of Images for Object Detection</h1>
+    
+    <form id="upload-form">
+        <label for="file-input">Select a Folder with JPG Images:</label>
+        <input 
+            type="file" 
+            id="file-input" 
+            name="files" 
+            webkitdirectory 
+            multiple 
+            accept=".jpg" 
+            title="Choose a folder containing image files for object detection" 
+            aria-label="Folder input for selecting JPG images">
+        <button type="submit">Upload</button>
+    </form>
+    
+    <div id="output"></div>
+
+    <script>
+        const form = document.getElementById('upload-form');
+        const fileInput = document.getElementById('file-input');
+        const output = document.getElementById('output');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const files = fileInput.files;
+            if (files.length === 0) {
+                output.textContent = 'Please select a folder containing images to upload.';
+                return;
+            }
+
+            const formData = new FormData();
+            for (let i = 0; i < files.length; i++) {
+                formData.append('files', files[i]);
+            }
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/upload/', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                // Ensure the response is OK and parse JSON
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                output.innerHTML = '<h2>Processed Images</h2>';
+                result.processed_images.forEach((filePath) => {
+                    const img = document.createElement('img');
+                    img.src = `http://127.0.0.1:8000/static/${filePath.replace(/\\/g, '/')}`;
+                    img.style.maxWidth = '100%';
+                    output.appendChild(img);
+                });
+            }
+             catch (error) {
+                console.error('Error:', error);
+                // output.textContent = `Error uploading images: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>

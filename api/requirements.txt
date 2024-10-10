@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+onnxruntime
+python-multipart
+pillow
+matplotlib
+numpy
+ultralytics
+# tensorflow==2.5.0
+# tensorflow-serving-api==2.5.0
