@@ -7,13 +7,13 @@ import cv2
 
 app = FastAPI()
 
-UPLOAD_DIRECTORY = "api/uploaded_images"
-PROCESSED_IMAGES_DIRECTORY = "api/processed_images"
+UPLOAD_DIRECTORY = "./uploaded_images"
+PROCESSED_IMAGES_DIRECTORY = "./processed_images"
 
 os.makedirs(UPLOAD_DIRECTORY, exist_ok=True)
 os.makedirs(PROCESSED_IMAGES_DIRECTORY, exist_ok=True)
 
-onnx_model = YOLO("best.onnx", task='detect')
+onnx_model = YOLO("../best.onnx", task='detect')
 
 class_names = ["Striped_Hyena", "Fishing_Cat"]
 
