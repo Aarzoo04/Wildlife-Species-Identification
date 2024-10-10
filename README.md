@@ -21,17 +21,17 @@ To set up the project locally, follow these steps:
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/Aarzoo04/Wildlife-Species-Identification.git
-   cd Wildlife-Species-Identification/api
+   cd Wildlife-Species-Identification
 2. **Set up a virtual environment (Optional)**:
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 3. **Install required packages**:
    ```bash
-   pip install -r requirements.txt
+   pip install -r api/requirements.txt
 4. **Run the FastAPI server**:
    ```bash
-   uvicorn main:app --reload
+   uvicorn api.main:app --reload
 5. **Access the application**:
   Open your browser and navigate to `http://127.0.0.1:8000` to use the app.
 

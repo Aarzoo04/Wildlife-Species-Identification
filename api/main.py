@@ -15,11 +15,11 @@ app = FastAPI()
 # Serve index.html at the root ("/")
 @app.get("/")
 def read_root():
-    return FileResponse("../index.html")
+    return FileResponse("./index.html")
 
 # Directories for file uploads and processed images
-UPLOAD_DIRECTORY = "./uploaded_images"
-PROCESSED_IMAGES_DIRECTORY = "./processed_images"
+UPLOAD_DIRECTORY = "api/uploaded_images"
+PROCESSED_IMAGES_DIRECTORY = "api/processed_images"
 
 # Create the directories if they don't exist
 os.makedirs(UPLOAD_DIRECTORY, exist_ok=True)
@@ -29,7 +29,7 @@ os.makedirs(PROCESSED_IMAGES_DIRECTORY, exist_ok=True)
 app.mount("/static", StaticFiles(directory=PROCESSED_IMAGES_DIRECTORY), name="static")
 
 # Load the ONNX model
-onnx_model = YOLO("../best.onnx", task='detect')
+onnx_model = YOLO("./best.onnx", task='detect')
 class_names = ["Striped_Hyena", "Fishing_Cat"]
 
 def plot_bbox_and_save(image_path, bbox_coords, class_name):
