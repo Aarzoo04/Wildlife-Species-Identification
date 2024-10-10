@@ -21,13 +21,7 @@ app = FastAPI()
 def read_root():
     return FileResponse("./index.html")
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
 
 # Directories for file uploads and processed images
 UPLOAD_DIRECTORY = "api/uploaded_images"
@@ -39,6 +33,14 @@ os.makedirs(PROCESSED_IMAGES_DIRECTORY, exist_ok=True)
 
 # Mount the directory to serve static files
 app.mount("/static", StaticFiles(directory=PROCESSED_IMAGES_DIRECTORY), name="static")
+
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["*"],  
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 # Load the ONNX model
 onnx_model = YOLO("./best.onnx", task='detect')
